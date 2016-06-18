@@ -45,3 +45,13 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+.gradle
+/local.properties
+.idea/
+.DS_Store
+build/
+/Loadings/gradlew
+/Loadings/gradlew.bat
+/Loadings/gradle/wrapper/

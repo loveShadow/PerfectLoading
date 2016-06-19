@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.zhaoli.loadings.loadingViews.RotateSquareLoading;
+import com.zhaoli.loadings.loadingViews.SegmentSquareLoading;
 import com.zhaoli.loadings.loadingViews.SwingCollisionLoading;
 import com.zhaoli.loadings.loadingViews.TestView;
 
@@ -32,7 +34,9 @@ public class MainActivity extends Activity {
 
         List<View> loadingViewList = new ArrayList<>();
 
+        loadingViewList.add(new SegmentSquareLoading(this));
         loadingViewList.add(new SwingCollisionLoading(this));
+        loadingViewList.add(new RotateSquareLoading(this));
 
         adapter.setData(loadingViewList);
         recyclerView.setAdapter(adapter);

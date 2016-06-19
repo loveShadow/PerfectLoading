@@ -31,7 +31,7 @@ public class SwingCollisionLoading extends BaseLoading {
     private final static int BALL_START_SHADOW_COLOR = Color.parseColor("#33355773");
     private final static int BALL_END_SHADOW_COLOR = Color.parseColor("#33D73B27");
 
-    private final static int BALL_RADIUS = 30;  //px
+    private final static int BALL_RADIUS = 16;  //px
     private final static int BALL_MAX = 7;
 
     private LinearGradient linearGradient = null;
@@ -39,9 +39,6 @@ public class SwingCollisionLoading extends BaseLoading {
 
     private AnimatorSet animatorSet = null;
     private float currentAngle = 0;
-
-    private AccelerateInterpolator accelerateInterpolator = new AccelerateInterpolator();
-    private DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator();
 
     public SwingCollisionLoading(Context context) {
         super(context);
@@ -80,6 +77,7 @@ public class SwingCollisionLoading extends BaseLoading {
             index = 1;
         }
 
+        //绘制固定的球
         for (; index < ((currentAngle >= 0) ? BALL_MAX : (BALL_MAX - 1)); index ++) {
             canvas.drawCircle(startX + index * BALL_RADIUS * 2 + BALL_RADIUS,
                     startY + BALL_RADIUS,
@@ -87,6 +85,7 @@ public class SwingCollisionLoading extends BaseLoading {
                     loadingPaint);
         }
 
+        //绘制动的球
         if (currentAngle > 0) {
             //球在左边翘起
             int leftX = (int) (startX + BALL_RADIUS * 3 - lineLength * Math.sin(Math.toRadians(currentAngle)));
@@ -117,22 +116,15 @@ public class SwingCollisionLoading extends BaseLoading {
                     BALL_START_SHADOW_COLOR, BALL_END_SHADOW_COLOR, Shader.TileMode.MIRROR);
         }
 
-        index = 0;
-        if (currentAngle < 0) {
-            index = 1;
-        }
-
         //设置渐变
         loadingPaint.setShader(shadowLinearGradient);
-
-        for (; index < BALL_MAX - 1; index ++) {
+        for (index = (currentAngle > 0) ? 1 : 0; index < ((currentAngle > 0) ? BALL_MAX : (BALL_MAX - 1)); index ++) {
             RectF oval2 = new RectF(startX + index * BALL_RADIUS * 2,
                     shadowStartY,
                     startX + BALL_RADIUS * 2 + index * BALL_RADIUS * 2,
                     shadowStartY + BALL_RADIUS / 2);
             canvas.drawOval(oval2, loadingPaint);
         }
-
     }
 
     @Override
@@ -145,10 +137,12 @@ public class SwingCollisionLoading extends BaseLoading {
 
     @Override
     protected void initLoading() {
+        //设置背景色
         setBackgroundColor(BACK_GROUND_COLOR);
 
+        //初始化动画
         animatorSet = new AnimatorSet();
-
+        //计算初始角度(0.2为2/10 线摆长度为半径的10倍)
         float startAngle = (float) Math.toDegrees(Math.asin(0.2));
 
         ValueAnimator animator1 = ValueAnimator.ofFloat(startAngle, 45);
@@ -166,7 +160,6 @@ public class SwingCollisionLoading extends BaseLoading {
         ValueAnimator animator4 = ValueAnimator.ofFloat(-45, -startAngle);
         animator4.setInterpolator(new AccelerateInterpolator());
         animator4.addUpdateListener(getAnimatorUpdateListener());
-
 
         animatorSet.playSequentially(animator1, animator2, animator3, animator4);
         animatorSet.setDuration(300);

@@ -7,6 +7,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -30,6 +31,8 @@ public class TranslationBallLoading extends BaseLoading {
             Color.parseColor("#4EB3E8"),
             Color.parseColor("#C25CEC")
     };
+
+    private final static int TEXT_COLOR = Color.parseColor("#D5D5D5");
 
     private final static int SPACE_PROPORTION = 12;    //Width / 13 //起始的间距
 
@@ -70,6 +73,12 @@ public class TranslationBallLoading extends BaseLoading {
         for (int i = 0; i < BALL_MAX; i ++) {
             drawBall(i, y, canvas);
         }
+
+        //绘制文字
+        loadingPaint.setColor(TEXT_COLOR);
+        loadingPaint.setTextSize(48);
+        loadingPaint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("Loading...", getWidth() / 2, (float) (y * 1.5), loadingPaint);
     }
 
     private void drawBall(int index, int y, Canvas canvas) {

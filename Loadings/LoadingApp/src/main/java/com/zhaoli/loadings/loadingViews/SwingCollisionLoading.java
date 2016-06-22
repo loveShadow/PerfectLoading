@@ -11,11 +11,8 @@ import android.graphics.LinearGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 
 /**
  * Created by zhaoli on 2016/6/17.
@@ -36,9 +33,9 @@ public class SwingCollisionLoading extends BaseLoading {
 
     private LinearGradient linearGradient = null;
     private LinearGradient shadowLinearGradient = null;
-
-    private AnimatorSet animatorSet = null;
     private float currentAngle = 0;
+
+    private RectF shadowRectF = new RectF();
 
     public SwingCollisionLoading(Context context) {
         super(context);
@@ -119,20 +116,12 @@ public class SwingCollisionLoading extends BaseLoading {
         //设置渐变
         loadingPaint.setShader(shadowLinearGradient);
         for (index = (currentAngle > 0) ? 1 : 0; index < ((currentAngle > 0) ? BALL_MAX : (BALL_MAX - 1)); index ++) {
-            RectF oval2 = new RectF(startX + index * BALL_RADIUS * 2,
-                    shadowStartY,
-                    startX + BALL_RADIUS * 2 + index * BALL_RADIUS * 2,
-                    shadowStartY + BALL_RADIUS / 2);
-            canvas.drawOval(oval2, loadingPaint);
+            shadowRectF.left = startX + index * BALL_RADIUS * 2;
+            shadowRectF.top = shadowStartY;
+            shadowRectF.right = startX + BALL_RADIUS * 2 + index * BALL_RADIUS * 2;
+            shadowRectF.bottom = shadowStartY + BALL_RADIUS / 2;
+            canvas.drawOval(shadowRectF, loadingPaint);
         }
-    }
-
-    @Override
-    public void startLoading() {
-    }
-
-    @Override
-    public void stopLoading() {
     }
 
     @Override
@@ -141,7 +130,7 @@ public class SwingCollisionLoading extends BaseLoading {
         setBackgroundColor(BACK_GROUND_COLOR);
 
         //初始化动画
-        animatorSet = new AnimatorSet();
+        AnimatorSet animatorSet = new AnimatorSet();
         //计算初始角度(0.2为2/10 线摆长度为半径的10倍)
         float startAngle = (float) Math.toDegrees(Math.asin(0.2));
 

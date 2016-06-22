@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.view.animation.LinearInterpolator;
 
 /**
  * Created by zhaoli on 2016/6/18.
@@ -31,7 +32,7 @@ public class RotateSquareLoading extends BaseLoading {
     private int[] xList = new int[7];
     private int[] yList = new int[7];
 
-    private ValueAnimator valueAnimator = null;
+    private ValueAnimator valueAnimator;
 
     public RotateSquareLoading(Context context) {
         super(context);
@@ -72,20 +73,11 @@ public class RotateSquareLoading extends BaseLoading {
     }
 
     @Override
-    public void startLoading() {
-
-    }
-
-    @Override
-    public void stopLoading() {
-
-    }
-
-    @Override
     protected void initLoading() {
         valueAnimator = ValueAnimator.ofInt(SQUARE_SIDE_LEGTH, 0, -SQUARE_SIDE_LEGTH);
         valueAnimator.setRepeatCount(-1);
         valueAnimator.setDuration(1000);
+        valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

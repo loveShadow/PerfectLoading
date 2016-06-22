@@ -1,8 +1,10 @@
 package com.zhaoli.loadings.loadingViews;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -33,9 +35,6 @@ public abstract class BaseLoading extends View {
         initLoading();
         initLoadingPaint();
     }
-
-    public abstract void startLoading();
-    public abstract void stopLoading();
 
     protected abstract void initLoading();
     protected abstract void initLoadingPaint();

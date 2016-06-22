@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.view.animation.LinearInterpolator;
 
 /**
  * Created by zhaoli on 2016/6/19.
@@ -245,16 +246,6 @@ public class SegmentSquareLoading extends BaseLoading {
     }
 
     @Override
-    public void startLoading() {
-
-    }
-
-    @Override
-    public void stopLoading() {
-
-    }
-
-    @Override
     protected void initLoading() {
         setBackgroundColor(BACKGROUND_COLOR);
 
@@ -277,6 +268,7 @@ public class SegmentSquareLoading extends BaseLoading {
                 - SQUARE_LENGTH, -2 * SQUARE_LENGTH, -3 * SQUARE_LENGTH);
         valueAnimator.setDuration(3000);
         valueAnimator.setRepeatCount(-1);
+        valueAnimator.setInterpolator(new LinearInterpolator());
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

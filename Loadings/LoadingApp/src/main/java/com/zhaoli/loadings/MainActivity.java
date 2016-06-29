@@ -7,7 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.zhaoli.loadings.loadingViews.ConvertBallLoading;
+import com.zhaoli.loadings.loadingViews.DownloadLoading;
 import com.zhaoli.loadings.loadingViews.JumpWhirlGraphLoading;
+import com.zhaoli.loadings.loadingViews.LineWhirlLoading1;
+import com.zhaoli.loadings.loadingViews.LineWhirlLoading2;
 import com.zhaoli.loadings.loadingViews.TranslationBallLoading;
 import com.zhaoli.loadings.loadingViews.RotateSquareLoading;
 import com.zhaoli.loadings.loadingViews.SegmentSquareLoading;
@@ -36,6 +39,9 @@ public class MainActivity extends Activity {
 
         List<View> loadingViewList = new ArrayList<>();
 
+        loadingViewList.add(new DownloadLoading(this));
+        loadingViewList.add(new LineWhirlLoading1(this));
+        loadingViewList.add(new LineWhirlLoading2(this));
         loadingViewList.add(new ConvertBallLoading(this));
         loadingViewList.add(new JumpWhirlGraphLoading(this));
         loadingViewList.add(new TranslationBallLoading(this));

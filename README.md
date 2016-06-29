@@ -31,3 +31,18 @@
 效果图
 
 ![](https://github.com/loveShadow/PerfectLoading/blob/master/Loadings/%E7%A4%BA%E4%BE%8B/Loading01.gif)
+
+###7. LineWhirlLoading1
+效果图
+
+![](https://github.com/loveShadow/PerfectLoading/blob/master/Loadings/%E7%A4%BA%E4%BE%8B/Loading08.gif)
+
+###8. LineWhirlLoading2
+效果图
+
+![](https://github.com/loveShadow/PerfectLoading/blob/master/Loadings/%E7%A4%BA%E4%BE%8B/Loading09.gif)
+
+###9. DownloadLoading
+效果图
+
+![](https://github.com/loveShadow/PerfectLoading/blob/master/Loadings/%E7%A4%BA%E4%BE%8B/Loading10.gif)

@@ -51,3 +51,6 @@
 效果图
 
 ![](https://github.com/loveShadow/PerfectLoading/blob/master/Loadings/%E7%A4%BA%E4%BE%8B/Loading11.gif)
+
+
+##动画暂时维护到这，之后有时间在增加好看的动画

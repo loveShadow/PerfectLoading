@@ -46,3 +46,8 @@
 效果图
 
 ![](https://github.com/loveShadow/PerfectLoading/blob/master/Loadings/%E7%A4%BA%E4%BE%8B/Loading10.gif)
+
+###10. AnnulusWhirlLoading
+效果图
+
+![](https://github.com/loveShadow/PerfectLoading/blob/master/Loadings/%E7%A4%BA%E4%BE%8B/Loading11.gif)

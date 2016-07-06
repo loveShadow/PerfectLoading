@@ -31,14 +31,17 @@ public class LineWhirlLoading2 extends BaseLoading{
 
     public LineWhirlLoading2(Context context) {
         super(context);
+        initAnim();
     }
 
     public LineWhirlLoading2(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public LineWhirlLoading2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override

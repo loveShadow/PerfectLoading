@@ -1,7 +1,5 @@
 package com.zhaoli.loadings.loadingViews;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.content.Context;
@@ -40,14 +38,17 @@ public class ConvertBallLoading extends BaseLoading {
 
     public ConvertBallLoading(Context context) {
         super(context);
+        initAnim();
     }
 
     public ConvertBallLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public ConvertBallLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override
@@ -139,13 +140,6 @@ public class ConvertBallLoading extends BaseLoading {
         ValueAnimator rightAnim = getRightAnim();
 
         animatorSet.playTogether(leftMoveAnim, rightAnim);
-        animatorSet.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-//                animation.start();
-            }
-        });
         animatorSet.start();
     }
 

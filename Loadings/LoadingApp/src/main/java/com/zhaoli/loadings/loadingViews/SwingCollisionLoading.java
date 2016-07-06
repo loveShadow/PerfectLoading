@@ -39,14 +39,17 @@ public class SwingCollisionLoading extends BaseLoading {
 
     public SwingCollisionLoading(Context context) {
         super(context);
+        initAnim();
     }
 
     public SwingCollisionLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public SwingCollisionLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override
@@ -155,6 +158,7 @@ public class SwingCollisionLoading extends BaseLoading {
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
                 animation.start();
             }
         });

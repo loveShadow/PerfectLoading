@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,14 @@ public class LoadingAdapter extends RecyclerView.Adapter<LoadingAdapter.LoadingV
     @Override
     public void onBindViewHolder(LoadingAdapter.LoadingViewHolder holder, int position) {
         holder.rootView.removeAllViews();
+        ViewParent viewParent = loadingViewList.get(position).getParent();
+        if (viewParent != null) {
+            if (viewParent instanceof ViewGroup) {
+                ((ViewGroup) viewParent).removeAllViews();
+            } else {
+                return;
+            }
+        }
         holder.rootView.addView(loadingViewList.get(position));
     }
 

@@ -61,14 +61,17 @@ public class JumpWhirlGraphLoading extends BaseLoading {
 
     public JumpWhirlGraphLoading(Context context) {
         super(context);
+        initAnim();
     }
 
     public JumpWhirlGraphLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public JumpWhirlGraphLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override
@@ -148,6 +151,7 @@ public class JumpWhirlGraphLoading extends BaseLoading {
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
                 animation.start();
             }
         });

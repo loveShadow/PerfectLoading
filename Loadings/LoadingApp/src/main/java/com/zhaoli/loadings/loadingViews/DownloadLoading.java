@@ -68,14 +68,26 @@ public class DownloadLoading extends BaseLoading {
 
     public DownloadLoading(Context context) {
         super(context);
+        initAnim();
     }
 
     public DownloadLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public DownloadLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
+    }
+
+    public void setCurrentProgress(int currentProgress) {
+        this.currentProgress = currentProgress;
+        centerText = "" + currentProgress;
+        if (currentProgress >= maxProgress) {
+            onLoadingEnd();
+            onStartAnimEnd();
+        }
     }
 
     @Override
@@ -400,17 +412,12 @@ public class DownloadLoading extends BaseLoading {
             public void run() {
                 currentProgress = 0;
                 while (true) {
-                    currentProgress++;
-                    if (currentProgress > maxProgress) {
-                        post(new Runnable() {
-                            @Override
-                            public void run() {
-                                onLoadingEnd();
-                            }
-                        });
-                        break;
-                    }
-                    centerText = "" + currentProgress;
+                    post(new Runnable() {
+                             @Override
+                             public void run() {
+                                 setCurrentProgress(++currentProgress);
+                             }
+                         });
                     post(new Runnable() {
                         @Override
                         public void run() {
@@ -453,17 +460,7 @@ public class DownloadLoading extends BaseLoading {
         animatorSet.start();
     }
 
-    /**
-     * 起始动画结束 回调
-     */
-    protected void onStartAnimEnd() {
-        test();
-    }
-
-    /**
-     * 加载结束
-     */
-    protected void onLoadingEnd() {
+    private void startEndAnim() {
         waveAnim.cancel();
         AnimatorSet animatorSet = getDownloadEndAnim();
         animatorSet.addListener(new AnimatorListenerAdapter() {
@@ -475,6 +472,20 @@ public class DownloadLoading extends BaseLoading {
             }
         });
         animatorSet.start();
+    }
+
+    /**
+     * 起始动画结束 回调
+     */
+    protected void onStartAnimEnd() {
+        test();
+    }
+
+    /**
+     * 加载结束 回调
+     */
+    protected void onLoadingEnd() {
+
     }
 
     /**

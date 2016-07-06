@@ -41,14 +41,17 @@ public class SegmentSquareLoading extends BaseLoading {
 
     public SegmentSquareLoading(Context context) {
         super(context);
+        initAnim();
     }
 
     public SegmentSquareLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public SegmentSquareLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override

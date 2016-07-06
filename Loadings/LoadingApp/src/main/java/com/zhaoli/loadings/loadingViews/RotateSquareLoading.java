@@ -36,14 +36,17 @@ public class RotateSquareLoading extends BaseLoading {
 
     public RotateSquareLoading(Context context) {
         super(context);
+        initAnim();
     }
 
     public RotateSquareLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public RotateSquareLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override

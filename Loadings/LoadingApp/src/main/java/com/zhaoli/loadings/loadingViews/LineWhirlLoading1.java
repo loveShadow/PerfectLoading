@@ -13,6 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
+
 /**
  * Created by zhaoli on 2016/6/22.
  * 线条旋转1
@@ -40,14 +41,17 @@ public class LineWhirlLoading1 extends BaseLoading {
 
     public LineWhirlLoading1(Context context) {
         super(context);
+        initAnim();
     }
 
     public LineWhirlLoading1(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public LineWhirlLoading1(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override
@@ -220,4 +224,6 @@ public class LineWhirlLoading1 extends BaseLoading {
         }
         return scaleUpdateListener;
     }
+
+
 }

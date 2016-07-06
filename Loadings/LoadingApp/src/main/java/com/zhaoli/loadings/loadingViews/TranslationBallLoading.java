@@ -49,14 +49,17 @@ public class TranslationBallLoading extends BaseLoading {
 
     public TranslationBallLoading(Context context) {
         super(context);
+        initAnim();
     }
 
     public TranslationBallLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initAnim();
     }
 
     public TranslationBallLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        initAnim();
     }
 
     @Override
@@ -118,6 +121,7 @@ public class TranslationBallLoading extends BaseLoading {
             animatorSet1.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
                     animation.start();
                 }
             });

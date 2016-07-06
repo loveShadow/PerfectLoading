@@ -1,10 +1,10 @@
 package com.zhaoli.loadings.loadingViews;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -18,22 +18,24 @@ public abstract class BaseLoading extends View {
     public BaseLoading(Context context) {
         super(context);
         this.context = context;
-        initLoading();
-        initLoadingPaint();
     }
 
     public BaseLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        initLoading();
-        initLoadingPaint();
     }
 
     public BaseLoading(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
-        initLoading();
+    }
+
+    /**
+     * 重载必须调用 (构造结束后调用)
+     */
+    protected void initAnim() {
         initLoadingPaint();
+        initLoading();
     }
 
     protected abstract void initLoading();
